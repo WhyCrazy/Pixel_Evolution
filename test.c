@@ -173,7 +173,8 @@ int main(int argc, const char *argv[])
 	coor[i][j].color = sfColor_toInteger(sfWhite);
 	coor[i][j].life = 100;
 	window = sfRenderWindow_create(mode, "SFML", sfFullscreen, NULL);
-	while (sfRenderWindow_isOpen(window)) {
+	while (sfRenderWindow_isOpen(window) && event.key.code != sfKeyEscape) {
+		sfRenderWindow_pollEvent(window, &event);
 		while (sfClock_getElapsedTime(clock).microseconds < 10);
 		sfClock_restart(clock);
 		grid(pixel, coor);
